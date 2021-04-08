@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Dominio.Entidades;
+using Infra.Contexto.Maps;
 
 namespace Infra.Contexto
 {
@@ -12,5 +13,11 @@ namespace Infra.Contexto
 
         public DbSet<Aluno> Alunos { get; set; }
         public DbSet<Curso> Cursos { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AlunoMap());
+            modelBuilder.ApplyConfiguration(new CursoMap());
+        }
     }
 }
