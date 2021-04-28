@@ -21,17 +21,22 @@ namespace WebAPI
        
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options =>
-            {
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                    mySqlOptionsAction: sqlOptions =>
-                    {
-                        sqlOptions.EnableRetryOnFailure(
-                        maxRetryCount: 10,
-                        maxRetryDelay: TimeSpan.FromSeconds(30),
-                        errorNumbersToAdd: null);
-                    });
-            });
+            //Configuração SQLSERVER
+            services.AddDbContext<DataContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
+            //Configução MySql
+            //services.AddDbContext<DataContext>(options =>
+            //{
+            //    options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+            //        mySqlOptionsAction: sqlOptions =>
+            //        {
+            //            sqlOptions.EnableRetryOnFailure(
+            //            maxRetryCount: 10,
+            //            maxRetryDelay: TimeSpan.FromSeconds(30),
+            //            errorNumbersToAdd: null);
+            //        });
+            //});
 
             services.AddControllers();
         }

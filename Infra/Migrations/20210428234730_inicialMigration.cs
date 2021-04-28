@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infra.Migrations
 {
@@ -12,7 +11,7 @@ namespace Infra.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Turno = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
                 },
@@ -26,10 +25,11 @@ namespace Infra.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CursoId = table.Column<int>(nullable: false),
                     Nome = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    Matricula = table.Column<string>(type: "varchar(4)", maxLength: 4, nullable: false)
+                    Matricula = table.Column<string>(type: "varchar(4)", maxLength: 4, nullable: false),
+                    Sexo = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
                 },
                 constraints: table =>
                 {
