@@ -1,6 +1,6 @@
 ﻿using Dominio.Entidades;
+using Dominio.IRepositories;
 using Infra.Contexto;
-using Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Infra.Persistencias
 {
-    public class AlunoRepositoy : IAlunoRepository
+    public class AlunoRepository : IAlunoRepository
     {
         private readonly DataContext _dataContext;
 
-        public AlunoRepositoy(DataContext dataContext)
+        public AlunoRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

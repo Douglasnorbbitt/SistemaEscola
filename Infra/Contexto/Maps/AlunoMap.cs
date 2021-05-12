@@ -13,6 +13,7 @@ namespace Infra.Contexto.Maps
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(100).HasColumnType("varchar(100)");
             builder.Property(x => x.Matricula).IsRequired().HasMaxLength(4).HasColumnType("varchar(4)");
             builder.Property(x => x.Sexo).HasMaxLength(20).HasColumnType("varchar(20)");
+            builder.Property(x => x.Telefone).HasMaxLength(14).HasColumnType("varchar(14)");
 
             //builder.HasOne(x => x.Curso).WithMany(x => x.Alunos);
         }

@@ -3,14 +3,16 @@ using Infra.Contexto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210512232747_inicialMigration")]
+    partial class inicialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,10 +43,6 @@ namespace Infra.Migrations
                     b.Property<string>("Sexo")
                         .HasColumnType("varchar(20)")
                         .HasMaxLength(20);
-
-                    b.Property<string>("Telefone")
-                        .HasColumnType("varchar(14)")
-                        .HasMaxLength(14);
 
                     b.HasKey("Id");
 

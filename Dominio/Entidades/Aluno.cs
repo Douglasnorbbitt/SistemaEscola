@@ -17,6 +17,7 @@ namespace Dominio.Entidades
         public string Nome { get; private set; }
         public string Matricula { get; private set; }
         public string Sexo { get; private set; }
+        public string Telefone { get; private set; }
         public Curso Curso { get; private set; }
     }
 }

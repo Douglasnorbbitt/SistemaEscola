@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210428234730_inicialMigration")]
-    partial class inicialMigration
+    [Migration("20210512233356_inclusaoDoTelefoneDoAluno")]
+    partial class inclusaoDoTelefoneDoAluno
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,10 @@ namespace Infra.Migrations
                     b.Property<string>("Sexo")
                         .HasColumnType("varchar(20)")
                         .HasMaxLength(20);
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("varchar(14)")
+                        .HasMaxLength(14);
 
                     b.HasKey("Id");
 

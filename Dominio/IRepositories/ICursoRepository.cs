@@ -1,10 +1,8 @@
 ﻿using Dominio.Entidades;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Infra.Interfaces
+namespace Dominio.IRepositories
 {
     public interface ICursoRepository
     {
