@@ -1,4 +1,6 @@
+using Dominio.IRepositories;
 using Infra.Contexto;
+using Infra.Persistencias;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +26,7 @@ namespace WebAPI
             //Configuração SQLSERVER
             services.AddDbContext<DataContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+
             //Configução MySql
             //services.AddDbContext<DataContext>(options =>
             //{
@@ -37,6 +39,9 @@ namespace WebAPI
             //            errorNumbersToAdd: null);
             //        });
             //});
+
+            //configuraçao do servico de injeção de dependência
+            services.AddScoped<ICursoRepository, CursoRepository>();
 
             services.AddControllers();
         }
