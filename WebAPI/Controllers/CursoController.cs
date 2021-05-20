@@ -1,9 +1,7 @@
 ﻿using Dominio.IRepositories;
 using Historias.Cursos;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WebAPI.Factories;
 using WebAPI.Models;
@@ -50,5 +48,21 @@ namespace WebAPI.Controllers
             var listaCursoVm = CursoFactory.MapearListaCursoViewModel(listaDeCursos);
             return listaCursoVm;
         }
+
+        [HttpGet("buscar-curso/{id}")]
+        public async Task<CursoViewModel> Buscar(int id)
+        {
+            var curso = await _consultaCurso.BuscarPorId(id);
+
+            if (curso == null)
+            {
+                return null;
+            }
+
+            var cursoViewModel = CursoFactory.MapearCursoViewModel(curso);
+
+            return cursoViewModel;
+        }
+
     }
 }

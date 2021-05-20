@@ -10,7 +10,7 @@ namespace Dominio.IRepositories
 
         Task Alterar(Curso curso);
 
-        Task Excluir(Curso curso);
+        Task Excluir(int id);
 
         Task<Curso> BuscarPorId(int id);
 

@@ -14,6 +14,11 @@ namespace WebAPI.Factories
             return new Curso(cursoViewModel.Nome, cursoViewModel.Turno);
         }
 
+        public static CursoViewModel MapearCursoViewModel(Curso curso)
+        {
+            return new CursoViewModel() { Id = curso.Id, Nome = curso.Nome, Turno = curso.Turno };
+        }
+
         public static IEnumerable<CursoViewModel> MapearListaCursoViewModel(IEnumerable<Curso> lista)
         {
             var listaCursoViewModel = new List<CursoViewModel>();

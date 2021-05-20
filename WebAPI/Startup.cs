@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using System;
 
 namespace WebAPI
@@ -43,6 +44,21 @@ namespace WebAPI
             //configuraçao do servico de injeção de dependência
             services.AddScoped<ICursoRepository, CursoRepository>();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Sis Escola API",
+                    Description = "API Projeto Aula S.D",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Ancelmo Luiz",
+                        Email = "ancelmo.luiz@hotmail.com"
+                    }
+                });
+            });
+
             services.AddControllers();
         }
 
@@ -54,6 +70,12 @@ namespace WebAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Projeto Aula S.D v1");
+            });
 
             app.UseRouting();
 
