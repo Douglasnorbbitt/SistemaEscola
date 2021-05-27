@@ -16,5 +16,11 @@ namespace Dominio.Entidades
         public string Nome { get; private set; }
         public string Turno { get; private set; }
         public IEnumerable<Aluno> Alunos { get; private set; }
+
+        public void AtualizarDados(string nome, string turno)
+        {
+            this.Nome = nome;
+            this.Turno = turno;
+        }
     }
 }

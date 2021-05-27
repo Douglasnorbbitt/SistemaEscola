@@ -13,11 +13,15 @@ namespace WebAPI.Controllers
     {
         private readonly CriarCurso _criarCurso;
         private readonly ConsultaCurso _consultaCurso;
+        private readonly AlterarCurso _alterarCurso;
+        private readonly ExcluirCurso _excluirCurso;
 
         public CursoController(ICursoRepository cursoRepository)
         {
             _criarCurso = new CriarCurso(cursoRepository);
             _consultaCurso = new ConsultaCurso(cursoRepository);
+            _alterarCurso = new AlterarCurso(cursoRepository);
+            _excluirCurso = new ExcluirCurso(cursoRepository);
         }
 
         [HttpPost("criar-curso")]
@@ -33,6 +37,46 @@ namespace WebAPI.Controllers
             await _criarCurso.Executar(curso);
 
             return Ok(new { mensagem = "Curso Criado com sucesso!" });
+        }
+
+        [HttpPut("alterar-curso")]
+        public async Task<IActionResult> Alterar([FromBody] CursoViewModel cursoViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { mensagem = "O campo nome é obrigatório" });
+            }
+
+            try
+            {
+                var curso = CursoFactory.MapearCurso(cursoViewModel);
+
+                await _alterarCurso.Executar(cursoViewModel.Id, curso);
+
+                return Ok(new { mensagem = "Curso alterado com sucesso" });
+            }
+            catch (System.Exception)
+            {
+
+                return BadRequest(new { erro = "Erro ao alterar o curso" });
+            }
+           
+        }
+
+        [HttpDelete("excluir-curso/{id}")]
+        public async Task<IActionResult> Excluir(int id)
+        {
+            try
+            {
+                await _excluirCurso.Executar(id);
+                return Ok(new { mensagem = "Curso excluido com sucesso" });
+            }
+            catch (System.Exception)
+            {
+
+                return BadRequest(new { erro = "Erro ao excluir o curso" });
+            }
+            
         }
 
         [HttpGet("listar-cursos")]
