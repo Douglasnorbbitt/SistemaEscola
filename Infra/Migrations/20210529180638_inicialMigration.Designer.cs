@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210512233356_inclusaoDoTelefoneDoAluno")]
-    partial class inclusaoDoTelefoneDoAluno
+    [Migration("20210529180638_inicialMigration")]
+    partial class inicialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

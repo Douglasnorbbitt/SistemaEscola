@@ -30,9 +30,11 @@ namespace Infra.Persistencias
             await _dataContext.SaveChangesAsync();
         }
 
-        public async Task Excluir(Aluno aluno)
+        public async Task Excluir(int id)
         {
-            _dataContext.Remove(aluno);
+            var aluno = await _dataContext.Alunos.FirstOrDefaultAsync(x => x.Id == id);
+
+            _dataContext.Alunos.Remove(aluno);
             await _dataContext.SaveChangesAsync();
         }
 

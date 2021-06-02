@@ -29,7 +29,8 @@ namespace Infra.Migrations
                     CursoId = table.Column<int>(nullable: false),
                     Nome = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Matricula = table.Column<string>(type: "varchar(4)", maxLength: 4, nullable: false),
-                    Sexo = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
+                    Sexo = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
+                    Telefone = table.Column<string>(type: "varchar(14)", maxLength: 14, nullable: true)
                 },
                 constraints: table =>
                 {
